@@ -1,3 +1,4 @@
+# predictor_api.py - contains functions to run model
 from flask import Flask, request, Response, json
 import numpy as np
 import pandas as pd
@@ -44,3 +45,4 @@ def predict():
     #make predicon using model
     prediction = rfc.predict(data_final)
     return Response(json.dumps(prediction[0]))
+

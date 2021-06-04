@@ -1,10 +1,11 @@
-from application import app
-from flask import render_template, request, json, jsonify
+from flask import Flask,render_template, request, json, jsonify
 from sklearn import preprocessing
 from sklearn.preprocessing import OneHotEncoder
 import requests
 import numpy
 import pandas as pd
+from predictor_api import app 
+
 
 #decorator to access the app
 @app.route("/")
@@ -37,3 +38,5 @@ def carclassify():
     #send input values and prediction result to index.html for display
     return render_template("index.html", buying = buying, maint = maint, doors = doors, persons = persons, lug_boot = lug_boot, safety = safety, results=results.content.decode('UTF-8'))
   
+if __name__ == '__main__':
+    app.run()
